@@ -1,0 +1,92 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="search ..." name="search" [formControl]="searchControl">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="tabs is-centered">
+    <ul>
+      <li class="is-active ">
+        <a href="/">
+          <span class="icon is-small">
+            <i class="fa fa-film"></i>
+            <!--<i class="fa fa-spin fa-spinner"></i>-->
+          </span>
+          <span>Movies</span>
+          <span *ngIf="movies"> ({{movies.total_results}}) </span>
+        </a>
+      </li>
+      <li>
+        <a class="is-disabled">
+          <span class="icon is-small"><i class="fa fa-television"></i></span>
+          <span>TV-Shows</span>
+          <span *ngIf="tvshows"> ({{tvshows.total_results}}) </span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span class="icon is-small"><i class="fa fa-user"></i></span>
+          <span>People</span>
+          <span *ngIf="people"> ({{people.total_results}}) </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="section" id="movie-result">
+  <div class="container">
+    <h1 class="title">Movie search results</h1>
+    <div *ngIf="movies" class="columns is-multiline">
+        <div *ngFor="let movie of movies.results" class="column is-2">
+          <app-movie-poster [movie]="movie"></app-movie-poster>
+        </div>
+    </div>
+    <div *ngIf="!movies || !movies.total_results" class="column is-centered">
+      No result
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <h1 class="title">TV-show search results</h1>
+    <div *ngIf="tvshows" class="columns is-multiline">
+      <div *ngFor="let movie of tvshows.results" class="column is-2">
+        <app-tv-show-poster [tvshow]="movie"></app-tv-show-poster>
+      </div>
+    </div>
+    <div *ngIf="!tvshows || !tvshows.total_results" class="column is-centered">
+      No result
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <h1 class="title">Stars search results</h1>
+    <div *ngIf="people" class="columns is-multiline">
+      <div *ngFor="let movie of people.results" class="column is-2">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by6">
+              <img src="{{movie.profile_path | posterPipe}}">
+            </figure>
+            <div class="movie-title">{{movie.name}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!people || !people.total_results" class="column is-centered">
+      No result
+    </div>
+  </div>
+</div>

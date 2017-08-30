@@ -1,0 +1,12 @@
+<div class="card">
+  <a [routerLink]="['/movie/',tvshow.name | slug: tvshow.id]" [attr.title]="tvshow.name">
+    <div class="card-image">
+      <figure class="image is-4by6">
+        <img [src]="tvshow.poster_path | posterPipe" [alt]="tvshow.name">
+      </figure>
+      <div class="movie-title">
+        {{tvshow.name}}
+      </div>
+    </div>
+  </a>
+</div>

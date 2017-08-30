@@ -1,0 +1,58 @@
+<nav class="navbar ">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+
+    <div class="navbar-burger burger" (click)="toggleNavbar()" [ngClass]="{'is-active':active}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div [ngClass]="{'is-active':active}" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item " href="/">
+        Home
+      </a>
+      <a class="navbar-item " href="/">
+        Latest
+      </a>
+      <a class="navbar-item " [routerLink]="['/movie-list','now_playing']" routerLinkActive="active">
+        Cinema
+      </a>
+      <a class="navbar-item " [routerLink]=
+        "['/movie-list','popular']" routerLinkActive="active">
+        Popular
+      </a>
+      <a class="navbar-item " [routerLink]="['/movie-list','top_rated']" routerLinkActive="active">
+        Toprated
+      </a>
+      <a class="navbar-item " [routerLink]="['/movie-list','upcoming']" routerLinkActive="active">
+        Upcoming
+      </a>
+
+      <a class="navbar-item " [routerLink]="['/search']" routerLinkActive="active">
+        Search
+      </a>
+
+    </div>
+
+    <div class="navbar-end">
+
+    </div>
+  </div>
+</nav>

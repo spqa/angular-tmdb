@@ -1,0 +1,33 @@
+<div *ngIf="!movie" class="section">
+  <app-loading></app-loading>
+</div>
+
+<section *ngIf="movie" class="hero is-medium is-bold">
+  <div class="hero-body" [background-image]="movie.backdrop_path | posterPipe: 'original'">
+    <div class="container">
+      <h1 class="title">
+        {{movie.title}}
+      </h1>
+      <h2 class="subtitle">
+        {{movie.overview | substr: 120}}
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div *ngIf="movie" class="section">
+  <div class="container">
+  <div class="columns">
+    <div class="column is-3">
+      <figure class="image z-depth-2">
+      <img src="{{movie.poster_path | posterPipe}}">
+      </figure>
+    </div>
+    <div class="column">
+      <h2 class="title">{{movie.original_title}} <span *ngIf="movie.release_date">({{movie.release_date | date:'y'}})</span></h2>
+      <h3>Overview</h3>
+      <p>{{movie.overview}}</p>
+    </div>
+  </div>
+  </div>
+</div>
